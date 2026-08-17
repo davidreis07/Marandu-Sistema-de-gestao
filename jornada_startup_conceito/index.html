@@ -1,0 +1,324 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jornada da Startup | UX Concept</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-cluster">
+        <div class="brand-mark">N</div>
+        <div>
+          <span class="eyebrow">Sistema de Gestão da Metodologia da Incubadora</span>
+          <h1>Painel de Acompanhamento da Jornada da Startup</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="ghost-button" id="startupOverviewButton" type="button">Visão Geral da Startup</button>
+        <button class="ghost-button" id="dashboardButton" type="button">Dashboard Executivo</button>
+        <button class="ghost-button" id="trlButton" type="button">TRL</button>
+        <button class="ghost-button" id="cerneButton" type="button">Status CERNE da Incubadora</button>
+        <button class="ghost-button" id="workspaceButton" type="button">Voltar ao Workspace</button>
+        <button class="primary-button" id="compareButton" type="button">Comparar Visualizações</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="view active" id="startupOverviewView" aria-labelledby="startupOverviewTitle">
+        <nav class="breadcrumb" aria-label="Navegação"><span>Workspace</span><b>/</b><strong>Visão Geral da Startup</strong></nav>
+
+        <section class="startup-control-hero">
+          <div>
+            <span class="eyebrow">Visão Geral da Startup</span>
+            <h2 id="startupOverviewTitle">Amazônia BioSensores</h2>
+            <p>Centro de controle para o consultor enxergar status, jornada, evidências, pendências e próxima ação recomendada em um único lugar.</p>
+            <div class="overview-actions">
+              <button class="primary-button" id="openJourneyFromOverview" type="button">Abrir Jornada</button>
+              <button class="ghost-button" id="openWorkspaceFromOverview" type="button">Ver Workspace</button>
+            </div>
+          </div>
+          <aside class="startup-health-card" id="startupHealthCard"></aside>
+        </section>
+
+        <section class="overview-kpis" id="startupOverviewKpis"></section>
+
+        <section class="startup-control-grid">
+          <article class="control-panel recommended-panel" id="startupRecommendedAction"></article>
+          <article class="control-panel" id="startupLastMeeting"></article>
+          <article class="control-panel" id="startupLastEvidence"></article>
+          <article class="control-panel pending-panel" id="startupPendingList"></article>
+          <article class="control-panel timeline-summary-panel">
+            <div class="panel-title"><h3>Linha do tempo resumida</h3><span>Últimos eventos</span></div>
+            <div class="mini-timeline" id="startupMiniTimeline"></div>
+          </article>
+        </section>
+      </section>
+
+
+      <section class="view" id="executiveDashboardView" aria-labelledby="executiveDashboardTitle">
+        <nav class="breadcrumb" aria-label="Navegação"><span>Workspace</span><b>/</b><strong>Dashboard Executivo</strong></nav>
+        <section class="bi-hero">
+          <div>
+            <span class="eyebrow">Business Intelligence</span>
+            <h2 id="executiveDashboardTitle">Dashboard Executivo da Incubadora</h2>
+            <p>Visão gerencial em estilo Power BI para acompanhar programas, TRL, CERNE, jornada das startups, reuniões, pendências e produtividade.</p>
+          </div>
+          <div class="bi-hero-actions">
+            <button class="primary-button" id="dashboardToWorkspace" type="button">Ver Central de Trabalho</button>
+            <button class="ghost-button" id="dashboardToTrl" type="button">Ver TRL</button>
+            <button class="ghost-button" id="dashboardToCerne" type="button">Ver CERNE</button>
+          </div>
+        </section>
+
+        <section class="bi-kpi-grid" id="biKpis"></section>
+
+        <section class="bi-grid">
+          <article class="bi-card bi-wide">
+            <div class="panel-title"><h3>Startups por Programa</h3><span>Carteira ativa</span></div>
+            <div class="bi-bars" id="programChart"></div>
+          </article>
+          <article class="bi-card">
+            <div class="panel-title"><h3>Distribuição TRL</h3><span>Maturidade tecnológica</span></div>
+            <div class="bi-donut" id="trlDonut"></div>
+          </article>
+          <article class="bi-card">
+            <div class="panel-title"><h3>Status CERNE</h3><span>Incubadora</span></div>
+            <div class="cerne-bi-list" id="cerneBiList"></div>
+          </article>
+          <article class="bi-card bi-wide">
+            <div class="panel-title"><h3>Jornada das Startups</h3><span>Funil de evolução</span></div>
+            <div class="journey-funnel" id="journeyFunnel"></div>
+          </article>
+          <article class="bi-card">
+            <div class="panel-title"><h3>Reuniões</h3><span>Últimos meses</span></div>
+            <div class="meeting-chart" id="meetingChart"></div>
+          </article>
+          <article class="bi-card">
+            <div class="panel-title"><h3>Produtividade</h3><span>Consultoria</span></div>
+            <div class="productivity-bi" id="productivityBi"></div>
+          </article>
+          <article class="bi-card bi-wide">
+            <div class="panel-title"><h3>Pendências por prioridade</h3><span>Gestão de risco</span></div>
+            <div class="pending-bi-list" id="pendingBiList"></div>
+          </article>
+          <article class="bi-card">
+            <div class="panel-title"><h3>Comparativos</h3><span>Mês atual x anterior</span></div>
+            <div class="comparison-list" id="comparisonList"></div>
+          </article>
+        </section>
+      </section>
+
+      <section class="view" id="trlView" aria-labelledby="trlTitle">
+        <nav class="breadcrumb" aria-label="Navegação"><span>Workspace</span><b>/</b><strong>TRL da Startup</strong></nav>
+        <section class="trl-hero">
+          <div>
+            <span class="eyebrow">Maturidade tecnológica</span>
+            <h2 id="trlTitle">Evolução TRL da Amazônia BioSensores</h2>
+            <p>Linha do tempo visual para acompanhar o avanço da tecnologia, o histórico de validações, o próximo nível e as evidências que sustentam cada marco.</p>
+            <div class="trl-hero-actions">
+              <button class="primary-button" id="trlToJourney" type="button">Abrir Jornada</button>
+              <button class="ghost-button" id="trlToDashboard" type="button">Ver Dashboard</button>
+            </div>
+          </div>
+          <aside class="trl-current-card" id="trlCurrentCard"></aside>
+        </section>
+
+        <section class="trl-kpi-grid" id="trlKpis"></section>
+
+        <section class="trl-experience-grid">
+          <article class="trl-panel trl-roadmap-panel">
+            <div class="panel-title"><h2>Linha do tempo TRL</h2><span>Da pesquisa ao mercado</span></div>
+            <div class="trl-roadmap" id="trlRoadmap"></div>
+          </article>
+          <article class="trl-panel">
+            <div class="panel-title"><h2>Próximo nível</h2><span>Foco recomendado</span></div>
+            <div class="trl-next-card" id="trlNextCard"></div>
+          </article>
+          <article class="trl-panel trl-wide">
+            <div class="panel-title"><h2>Gráfico de evolução</h2><span>Histórico simulado</span></div>
+            <div class="trl-evolution-chart" id="trlEvolutionChart"></div>
+          </article>
+          <article class="trl-panel">
+            <div class="panel-title"><h2>Histórico</h2><span>Últimos marcos</span></div>
+            <div class="trl-history-list" id="trlHistoryList"></div>
+          </article>
+          <article class="trl-panel trl-wide">
+            <div class="panel-title"><h2>Leitura técnica</h2><span>O que o TRL comunica</span></div>
+            <div class="trl-explain-grid" id="trlExplainGrid"></div>
+          </article>
+        </section>
+      </section>
+      <section class="view" id="journeyView" aria-labelledby="journeyTitle">
+        <nav class="breadcrumb" aria-label="Navegação"><span>Workspace</span><b>/</b><strong>Jornada da Startup</strong></nav>
+
+        <section class="startup-hero">
+          <div class="hero-copy">
+            <span class="eyebrow">Startup em acompanhamento</span>
+            <h2 id="journeyTitle">Amazônia BioSensores</h2>
+            <p>Experiência digital inspirada no painel físico da incubadora, organizada para orientar o consultor no próximo passo.</p>
+          </div>
+          <div class="startup-meta" id="startupMeta"></div>
+        </section>
+
+        <section class="layout-grid">
+          <div class="journey-board">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">Jornada interativa</span>
+                <h2>Da ideia ao impacto</h2>
+              </div>
+              <span class="status-pill" id="overallPill">Atualizando...</span>
+            </div>
+            <div class="journey-command" id="journeyCommand"></div>
+            <div class="stage-stack" id="stageStack"></div>
+          </div>
+
+          <aside class="insight-panel" aria-label="Resumo da startup">
+            <div class="panel-title"><h2>Resumo da Startup</h2><span>Visão do consultor</span></div>
+            <div class="score-ring"><strong id="overallScore">0%</strong><span>Jornada geral</span></div>
+            <div class="insight-list" id="insightList"></div>
+          </aside>
+        </section>
+
+        <section class="timeline-panel">
+          <div class="panel-title"><h2>Linha do tempo</h2><span>Eventos automáticos simulados</span></div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+      </section>
+
+      <section class="view" id="workspaceView" aria-labelledby="workspaceTitle">
+        <nav class="breadcrumb" aria-label="Navegação"><span>Workspace</span><b>/</b><strong>Central de Trabalho</strong></nav>
+        <section class="workspace-hero">
+          <div>
+            <span class="eyebrow">Central do consultor</span>
+            <h2 id="workspaceTitle">Central de Trabalho Inteligente</h2>
+            <p>Prioridades, atrasos, critérios, agenda e notificações organizados para o consultor entender rapidamente o que precisa fazer hoje.</p>
+          </div>
+          <button class="primary-button" id="backToJourney" type="button">Abrir Jornada</button>
+        </section>
+        <div class="workspace-grid" id="workspaceGrid"></div>
+      </section>
+
+      <section class="view" id="cerneView" aria-labelledby="cerneTitle">
+        <nav class="breadcrumb" aria-label="Navegação"><span>Workspace</span><b>/</b><strong>Status CERNE da Incubadora</strong></nav>
+        <section class="workspace-hero cerne-hero">
+          <div>
+            <span class="eyebrow">Maturidade da incubadora</span>
+            <h2 id="cerneTitle">Status CERNE da Incubadora</h2>
+            <p>Esta visão não classifica empresas. Ela mostra a situação da incubadora frente aos 53 indicadores CERNE extraídos do edital/manual.</p>
+          </div>
+          <button class="primary-button" id="backToJourneyFromCerne" type="button">Voltar à Jornada</button>
+        </section>
+
+        <section class="cerne-grid">
+          <article class="cerne-summary-card">
+            <span class="eyebrow">Classificação institucional</span>
+            <h3 id="incubatorCerneStatus">Calculando...</h3>
+            <p id="incubatorCerneExplanation">A classificação considera os indicadores atendidos, pendentes e em análise por nível CERNE.</p>
+            <div class="cerne-kpis" id="cerneKpis"></div>
+          </article>
+          <article class="cerne-summary-card">
+            <span class="eyebrow">Como interpretar</span>
+            <h3>CERNE é da incubadora</h3>
+            <p>A empresa pode ter jornada, TRL e evidências próprias. Já o nível CERNE representa a maturidade dos processos da incubadora.</p>
+            <div class="interpretation-list">
+              <span>1. Indicadores são avaliados por nível CERNE.</span>
+              <span>2. Evidências comprovam atendimento dos indicadores.</span>
+              <span>3. O nível institucional sobe conforme os indicadores do nível são atendidos.</span>
+            </div>
+          </article>
+        </section>
+
+        <section class="cerne-audit-grid">
+          <article class="cerne-audit-card cerne-wide">
+            <div class="panel-title"><h2>Farol dos indicadores</h2><span>Visão institucional para auditoria</span></div>
+            <div class="cerne-signal-grid" id="cerneSignalCards"></div>
+          </article>
+          <article class="cerne-audit-card">
+            <div class="panel-title"><h2>Status geral</h2><span>53 indicadores</span></div>
+            <div class="cerne-status-chart" id="cerneStatusChart"></div>
+          </article>
+        </section>
+
+        <section class="cerne-levels" id="cerneLevels"></section>
+
+        <section class="cerne-chart-grid">
+          <article class="cerne-audit-card">
+            <div class="panel-title"><h2>Conformidade por CERNE</h2><span>% atendido</span></div>
+            <div class="cerne-horizontal-chart" id="cerneLevelChart"></div>
+          </article>
+          <article class="cerne-audit-card">
+            <div class="panel-title"><h2>Obrigatórios</h2><span>Prontos para comprovação</span></div>
+            <div class="cerne-horizontal-chart" id="cerneRequiredChart"></div>
+          </article>
+          <article class="cerne-audit-card">
+            <div class="panel-title"><h2>Processos críticos</h2><span>Pendências por processo</span></div>
+            <div class="cerne-process-list" id="cerneProcessChart"></div>
+          </article>
+        </section>
+
+        <section class="timeline-panel cerne-indicators-panel">
+          <div class="panel-title">
+            <div><h2>Indicadores CERNE</h2><span id="cerneResultCount">Base dos 53 indicadores</span></div>
+            <button class="ghost-button" data-clear-cerne-filters type="button">Limpar filtros</button>
+          </div>
+          <div class="cerne-filter-panel" aria-label="Filtros dos indicadores CERNE">
+            <label>Pesquisa
+              <input id="cerneSearch" type="search" placeholder="Buscar indicador, processo, prática ou responsável">
+            </label>
+            <label>Nível
+              <select id="cerneLevelFilter" data-cerne-filter><option value="">Todos</option></select>
+            </label>
+            <label>Status
+              <select id="cerneStatusFilter" data-cerne-filter><option value="">Todos</option></select>
+            </label>
+            <label>Público
+              <select id="cerneAudienceFilter" data-cerne-filter><option value="">Todos</option></select>
+            </label>
+            <label>Processo
+              <select id="cerneProcessFilter" data-cerne-filter><option value="">Todos</option></select>
+            </label>
+          </div>
+          <div class="cerne-indicator-table" id="cerneIndicatorTable"></div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="evidenceModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="evidenceTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <form class="modal-card" id="evidenceForm">
+      <button class="modal-close" data-close-modal type="button" aria-label="Fechar">×</button>
+      <span class="eyebrow">Nova evidência</span>
+      <h2 id="evidenceTitle">Adicionar Evidência</h2>
+      <p id="evidenceContext">Vincule uma evidência ao critério selecionado.</p>
+      <label><span>Título da evidência</span><input id="evidenceName" required minlength="4" placeholder="Ex.: Relatório de validação"></label>
+      <label><span>Observação</span><textarea id="evidenceNote" required placeholder="Descreva rapidamente o que foi comprovado."></textarea></label>
+      <div class="evidence-drop">
+        <strong>Área de evidência</strong>
+        <span>Protótipo visual para anexar arquivo, link ou observação técnica no MVP futuro.</span>
+      </div>
+      <div class="modal-actions"><button class="ghost-button" data-close-modal type="button">Cancelar</button><button class="primary-button" type="submit">Salvar evidência</button></div>
+    </form>
+  </div>
+
+  <div class="modal" id="compareModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="compareTitle">
+    <div class="modal-backdrop" data-close-compare></div>
+    <section class="compare-card">
+      <button class="modal-close" data-close-compare type="button" aria-label="Fechar">×</button>
+      <span class="eyebrow">Escolha de conceito visual</span>
+      <h2 id="compareTitle">Comparar Visualizações</h2>
+      <p>Três leituras da mesma jornada para apoiar a coordenação antes do desenvolvimento definitivo.</p>
+      <div class="compare-grid" id="compareGrid"></div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="../plataforma_marandu_prototipo/data/seed.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
